@@ -6,7 +6,7 @@ import config from '../config/config';
 import state from '../store';
 import { download } from '../assets';
 import { downloadCanvasToImage, reader } from '../config/helpers';
-import { EditorTabs, FilerTabs, DecalTypes } from '../config/constants';
+import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants';
 import { fadeAnimation, slideAnimation } from '../config/motion';
 import {
   AIPicker,
@@ -17,7 +17,24 @@ import {
 } from '../components';
 
 const Customizer = () => {
-  return <div>Customizer</div>;
+  const snap = useSnapshot(state);
+  return (
+    <AnimatePresence>
+      {!snap.intro && (
+        <>
+          <motion.div
+            key='custom'
+            className='absolute top-0 left-0 z-10'
+            {...slideAnimation('left')}
+          >
+            <div className='flex items-center min-h-screen'>
+              <div className='editortable-container tabs'></div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
 };
 
 export default Customizer;
