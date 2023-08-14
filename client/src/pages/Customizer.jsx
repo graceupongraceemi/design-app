@@ -37,7 +37,7 @@ const Customizer = () => {
       case 'colorpicker':
         return <ColorPicker />;
       case 'filepicker':
-        return <FilePicker file={file} setFile={setFile} />;
+        return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
       case 'aipicker':
         return <AIPicker />;
       default:
@@ -52,6 +52,19 @@ const Customizer = () => {
 
     if (!activeFilterTab[decalType.filterTab]) {
       handleActiveFilterTab(decalType.filterTab);
+    }
+  };
+
+  const handleActiveFilterTab = (tabName) => {
+    switch (tabname) {
+      case 'logoShirt':
+        state.isLogoTexture = !activeFilterTab[tabName];
+        break;
+      case 'stylishShirt':
+        state.isFullTexture = !activeFilterTab[tabName];
+      default:
+        state.isFullTexture = true;
+        state.isLogoTexture = true;
     }
   };
 
