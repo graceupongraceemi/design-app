@@ -16,6 +16,25 @@ const FilePicker = ({ file, setFile, readFile }) => {
         <label htmlFor='file-upload' className='filepicker-lable'>
           Upload File
         </label>
+
+        <p className='mt-2 text-gray-4=500 text-xs truncate'>
+          {file === '' ? 'No file selected' : file.name}
+        </p>
+      </div>
+
+      <div className='mt- flex flex-wrap gap-36'>
+        <CustomButton
+          type='outline'
+          title='Logo'
+          handleClick={() => readFile('logo')}
+          customStyles='text-xs'
+        />
+        <CustomButton
+          type='filled'
+          title='Full'
+          handleClick={() => readFile('full')}
+          customStyles='text-xs'
+        />
       </div>
     </div>
   );
